@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/************ Default Css ************/
 * {
   margin: 0;
   padding: 0;

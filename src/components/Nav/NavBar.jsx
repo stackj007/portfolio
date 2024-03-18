@@ -18,58 +18,41 @@ const NavBar = ({
       }`}
     >
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <Link to="/" className={`${styles.logo} w-9`}>
+        <Link to="/" className={styles.logo}>
           <img src={logo} alt="Logo" />
         </Link>
-        <div className="flex items-center space-x-8">
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="#home"
-              className={`${
-                activeLink === 'home'
-                  ? 'text-blue-300'
-                  : 'text-white'
-              } font-normal text-opacity-75 hover:text-opacity-100`}
-              onClick={() => onUpdateActiveLink('home')}
-            >
-              Home
-            </Link>
-            <Link
-              to="#skills"
-              className={`${
-                activeLink === 'skills'
-                  ? 'text-blue-300'
-                  : 'text-white'
-              } font-normal text-opacity-75 hover:text-opacity-100`}
-              onClick={() => onUpdateActiveLink('skills')}
-            >
-              Skills
-            </Link>
-            <Link
-              to="#projects"
-              className={`${
-                activeLink === 'projects'
-                  ? 'text-blue-300'
-                  : 'text-white'
-              } font-normal text-opacity-75 hover:text-opacity-100`}
-              onClick={() => onUpdateActiveLink('projects')}
-            >
-              Projects
-            </Link>
+
+        <div className="flex items-center space-x-8 md:space-x-4 lg:space-x-8">
+          <div className="hidden md:flex items-center space-x-8 md:space-x-4 lg:space-x-8">
+            {['home', 'skills', 'projects'].map((link) => (
+              <Link
+                key={link}
+                to={`#${link}`}
+                className={`${
+                  activeLink === link
+                    ? 'text-blue-300'
+                    : 'text-white'
+                } font-normal text-opacity-75 hover:text-opacity-100`}
+                onClick={() => onUpdateActiveLink(link)}
+              >
+                {link.charAt(0).toUpperCase() +
+                  link.slice(1)}
+              </Link>
+            ))}
           </div>
-          <div
-            className={`${styles.socialIcon} flex items-center space-x-5`}
-          >
-            <a href="#">
+
+          <div className={styles.socialIcon}>
+            <a href="#" className={styles.socialIconLink}>
               <img src={navIcon1} alt="" />
             </a>
-            <a href="#">
+            <a href="#" className={styles.socialIconLink}>
               <img src={navIcon2} alt="" />
             </a>
-            <a href="#">
+            <a href="#" className={styles.socialIconLink}>
               <img src={navIcon3} alt="" />
             </a>
           </div>
+
           <Link
             to="#connect"
             className="ml-6 bg-transparent border border-white text-white hover:bg-white hover:text-black px-6 py-3 font-bold transition-colors duration-300"
